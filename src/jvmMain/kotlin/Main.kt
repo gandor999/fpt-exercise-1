@@ -23,10 +23,72 @@ fun app() {
 
     MaterialTheme {
         Column(Modifier.fillMaxSize(), Arrangement.spacedBy(5.dp)) {
-            Button(onClick = {
-                text = "Hello, Desktop!!!"
-            }) {
-                Text(text)
+            Card(
+                modifier = Modifier.padding(16.dp),
+                elevation = 6.dp,
+            ) {
+                Column(
+                    modifier = Modifier.padding(16.dp), horizontalAlignment = Alignment.End
+                ) {
+                    Box(
+                        modifier = Modifier.align(Alignment.End)
+                    ) {
+                        Card(
+                            elevation = 6.dp,
+                            backgroundColor = Color(red = 153, green = 221, blue = 200),
+                            modifier = Modifier.size(width = 350.dp, height = 50.dp)
+                        ) {
+                            Text(
+                                text = if (textHeader == "") "" else "The selected number is $textHeader",
+                                modifier = Modifier.padding(16.dp),
+                                textAlign = TextAlign.End,
+                            )
+                        }
+                    }
+
+                    Column(
+                        modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).verticalScroll(
+                            rememberScrollState()
+                        ),
+                        horizontalAlignment = Alignment.End
+                    ) {
+                        displaySelectedInputs(listOfInputNumbers, setTextHeader)
+                    }
+
+                    Box {
+                        Row(
+                            verticalAlignment = Alignment.Bottom, //horizontalArrangement = Arrangement.End,
+                        ) {
+                            OutlinedTextField(modifier = Modifier.padding(end = 10.dp),
+                                value = inputString,
+                                onValueChange = {
+
+                                    setInputString(it)
+
+                                })
+
+                            Button(modifier = Modifier.size(size = 27.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    backgroundColor = Color(
+                                        red = 149, green = 191, blue = 116
+                                    )
+                                ),
+                                contentPadding = PaddingValues(0.dp),
+                                onClick = {
+                                    try {
+                                        listOfInputNumbers.add(inputString.toInt())
+                                    } catch (e: NumberFormatException) {
+                                        println("Di pede")
+                                    }
+                                }) {
+                                Text("+")
+                            }
+                        }
+                    }
+
+                }
+
+
             }
         }
     }
