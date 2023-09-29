@@ -85,9 +85,7 @@ fun app() {
                     }
 
                     Column(
-                        modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).verticalScroll(
-                            rememberScrollState()
-                        ), horizontalAlignment = Alignment.End
+                        modifier = Modifier.padding(top = 16.dp, bottom = 16.dp), horizontalAlignment = Alignment.End
                     ) {
                         displaySelectedInputs(listOfInputNumbers, setTextHeader)
                     }
