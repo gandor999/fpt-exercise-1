@@ -15,7 +15,11 @@ import androidx.compose.ui.window.application
 @Composable
 @Preview
 fun app() {
-    var text by remember { mutableStateOf("Hello!") }
+    val (inputString, setInputString) = remember { mutableStateOf("") }
+    val (textHeader, setTextHeader) = remember { mutableStateOf("") }
+    val listOfInputNumbers: MutableList<Int> = remember {
+        mutableStateListOf()
+    }
 
     MaterialTheme {
         Column(Modifier.fillMaxSize(), Arrangement.spacedBy(5.dp)) {
