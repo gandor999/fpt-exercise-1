@@ -33,7 +33,7 @@ fun displaySelectedInputs(listOfInputNumbers: MutableList<Int>, setTextHeader: (
                 ) {
 
                 Text(
-                    text = inputNumber.toString(), modifier = Modifier.padding(end = 100.dp)
+                    text = inputNumber.toString(), modifier = Modifier.padding(end = 10.dp)
                 )
 
 
@@ -104,7 +104,7 @@ fun app() {
                     ) {
                         displaySelectedInputs(listOfInputNumbers, setTextHeader)
                     }
-
+                    
                     Box {
                         Row(
                             verticalAlignment = Alignment.Bottom, //horizontalArrangement = Arrangement.End,
