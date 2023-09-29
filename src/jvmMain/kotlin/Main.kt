@@ -21,44 +21,32 @@ import androidx.compose.ui.window.application
 fun displaySelectedInputs(listOfInputNumbers: MutableList<Int>, setTextHeader: (String) -> Unit) {
     for ((index, inputNumber) in listOfInputNumbers.withIndex()) {
         Button(
-            onClick = { setTextHeader(inputNumber.toString()) }, colors = ButtonDefaults.buttonColors(
+            onClick = { setTextHeader(inputNumber.toString()) },
+            colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color(
                     red = 244, green = 162, blue = 89
                 )
             )
         ) {
-            Row(
-                horizontalArrangement = Arrangement.End,
-
-                ) {
+            Row(horizontalArrangement = Arrangement.End) {
 
                 Text(
                     text = inputNumber.toString(), modifier = Modifier.padding(end = 10.dp)
                 )
 
-
-                Button(modifier = Modifier.size(size = 20.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color(
-                            red = 188,
-                            green = 75,
-                            blue = 81
-                        )
-                    ),
-                    contentPadding = PaddingValues(0.dp),
-                    onClick = {
-                        listOfInputNumbers.removeAt(index)
-                    }) {
+                Button(modifier = Modifier.size(size = 20.dp), colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color(
+                        red = 188, green = 75, blue = 81
+                    )
+                ), contentPadding = PaddingValues(0.dp), onClick = {
+                    listOfInputNumbers.removeAt(index)
+                }) {
                     Text(
-                        text = "x",
-                        textAlign = TextAlign.Center,
-                        color = Color.Black
+                        text = "x", textAlign = TextAlign.Center, color = Color.Black
                     )
                 }
-
             }
         }
-
     }
 }
 
@@ -99,12 +87,11 @@ fun app() {
                     Column(
                         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp).verticalScroll(
                             rememberScrollState()
-                        ),
-                        horizontalAlignment = Alignment.End
+                        ), horizontalAlignment = Alignment.End
                     ) {
                         displaySelectedInputs(listOfInputNumbers, setTextHeader)
                     }
-                    
+
                     Box {
                         Row(
                             verticalAlignment = Alignment.Bottom, //horizontalArrangement = Arrangement.End,
@@ -112,9 +99,7 @@ fun app() {
                             OutlinedTextField(modifier = Modifier.padding(end = 10.dp),
                                 value = inputString,
                                 onValueChange = {
-
                                     setInputString(it)
-
                                 })
 
                             Button(modifier = Modifier.size(size = 27.dp),
@@ -135,10 +120,7 @@ fun app() {
                             }
                         }
                     }
-
                 }
-
-
             }
         }
     }
