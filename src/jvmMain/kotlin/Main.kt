@@ -12,6 +12,52 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 
+
+@Composable
+fun displaySelectedInputs(listOfInputNumbers: MutableList<Int>, setTextHeader: (String) -> Unit) {
+    for ((index, inputNumber) in listOfInputNumbers.withIndex()) {
+        Button(
+            onClick = { setTextHeader(inputNumber.toString()) }, colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color(
+                    red = 244, green = 162, blue = 89
+                )
+            )
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.End,
+
+                ) {
+
+                Text(
+                    text = inputNumber.toString(), modifier = Modifier.padding(end = 100.dp)
+                )
+
+
+                Button(modifier = Modifier.size(size = 20.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color(
+                            red = 188,
+                            green = 75,
+                            blue = 81
+                        )
+                    ),
+                    contentPadding = PaddingValues(0.dp),
+                    onClick = {
+                        listOfInputNumbers.removeAt(index)
+                    }) {
+                    Text(
+                        text = "x",
+                        textAlign = TextAlign.Center,
+                        color = Color.Black
+                    )
+                }
+
+            }
+        }
+
+    }
+}
+
 @Composable
 @Preview
 fun app() {
